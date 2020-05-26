@@ -9,7 +9,7 @@ const DemoShow = styled.div`
   flex-direction: column;
   flex: 1;
   min-width: 320px;
-  max-width: ${Math.min(window.screen.width, 414)}px;
+  max-width: ${window.innerWidth}px;
   max-height: ${window.innerHeight}px;
 
   [role="radiogroup"] label {

@@ -32,7 +32,7 @@ export const cols = 2;
 // 槽宽，横向、纵向一致
 export const gutter = 10;
 // 瀑布流容器高宽
-export const viewWidth = Math.min(window.screen.width, 414) - 24;
+export const viewWidth = window.innerWidth - 24;
 export const viewHeight = window.innerHeight - 48;
 // 子项的扩展内容高度
 export const addHeight = 32;
