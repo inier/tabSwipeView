@@ -1,2 +1,0 @@
-# tabSwipeView
-Created with CodeSandbox

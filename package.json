@@ -1,0 +1,35 @@
+{
+  "name": "tabs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@ozo/masonry": "1.0.25",
+    "@ozo/mixins-sass": "1.1.7",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-loading": "2.0.3",
+    "react-scripts": "3.0.1",
+    "react-swipeable-views": "0.13.9",
+    "react-swipeable-views-core": "0.13.7",
+    "react-swipeable-views-utils": "0.13.9",
+    "styled-components": "latest"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
