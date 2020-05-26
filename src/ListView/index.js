@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -71,7 +71,7 @@ const Loading = ({
   </div>
 );
 
-class ListView extends PureComponent {
+class ListView extends Component {
   constructor(props) {
     super(props);
 
@@ -236,8 +236,17 @@ class ListView extends PureComponent {
       : 0;
   };
   render() {
-    const { currentTabIndex, loading, initLoading } = this.state;
-
+    const {
+      data,
+      currentTabIndex,
+      cols,
+      gutter,
+      renderType,
+      virtualized,
+      lazyLoadProps,
+      loading,
+      initLoading
+    } = this.state;
     return (
       <div className="listView">
         <AppBar position="static" color="default">
@@ -262,7 +271,44 @@ class ListView extends PureComponent {
             })}
           </Tabs>
         </AppBar>
-        <VirtualizeSwipeableViews
+        <SwipeableViews
+          index={currentTabIndex}
+          onChangeIndex={this.handleChangeIndex}
+          onTransitionEnd={this.handleTransitionEnd}
+          containerStyle={{ height: viewHeight }}
+          slideStyle={{ height: "100%" }}
+          threshold={2}
+        >
+          {tabs.map((item, index) => {
+            const { id } = item;
+            return (
+              <div
+                key={id}
+                style={Object.assign(
+                  {},
+                  TabPanelStyles.slide,
+                  TabPanelStyles[`slide${index + 1}`]
+                )}
+              >
+                <Masonry
+                  name={`masonry-${id}`}
+                  theme="flat"
+                  data={data[currentTabIndex]}
+                  renderType={renderType}
+                  virtualized={virtualized}
+                  maxScreen={6}
+                  cols={cols}
+                  gutter={gutter}
+                  lazyLoadProps={lazyLoadProps}
+                  onScroll={this.handleScroll}
+                  onClick={this.handleClick}
+                />
+              </div>
+            );
+          })}
+        </SwipeableViews>
+
+        {/* <VirtualizeSwipeableViews
           index={currentTabIndex}
           onChangeIndex={this.handleChangeIndex}
           onTransitionEnd={this.handleTransitionEnd}
@@ -271,7 +317,7 @@ class ListView extends PureComponent {
           slideCount={tabs.length}
           slideRenderer={this.slideRenderer}
           threshold={2}
-        />
+        /> */}
         {initLoading ? (
           <Loading key="initDataLoading" className="up" size={32} />
         ) : null}

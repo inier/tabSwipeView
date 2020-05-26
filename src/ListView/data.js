@@ -41,10 +41,10 @@ export const maxHeight = 500;
 // 懒加载属性集合
 export const lazyLoadProps = {
   // 提前加载偏移（相对于图片容器顶部）
-  offset: 0
-  // once: true,
-  // throttle: true
-  // scroll: false
+  // offset: 200,
+  once: true,
+  throttle: true,
+  scroll: false
   // 占位图
   // placeholder: <img src="" alt="" />,
 };
